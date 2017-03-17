@@ -7,6 +7,7 @@ import { webPort, staticPath } from '../shared/config';
 import renderApp from './render-app';
 
 const app = express();
+// flow-disable-next-line
 const http = Server(app);
 const io = socketIO(http);
 // setUpSocket(io);
@@ -16,8 +17,12 @@ app.use(staticPath, express.static('static'));
 
 app.get('/', (req, res) => {
   res.send(renderApp());
-})
+});
 
 http.listen(webPort, () => {
   console.log(`Server running on port ${webPort}`);
+});
+
+io.on('connect', (socket) => {
+  console.log('[socket.io] A client connected');
 });

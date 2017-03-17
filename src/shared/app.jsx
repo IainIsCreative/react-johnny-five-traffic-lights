@@ -1,10 +1,11 @@
 // @flow
 
 import React from 'react';
+import TestButton from './containers/test-button';
 
 const App = () => (
   <div className="traffic-lights-app">
-    Hello World!
+    <TestButton />
   </div>
 );
 

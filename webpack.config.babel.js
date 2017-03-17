@@ -14,7 +14,7 @@ export default {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist/js'),
-    publicPath: `http://localhost:${wdsPort}/dist/js`,
+    publicPath: `http://localhost:7000/dist/js`,
   },
 
   module: {
@@ -33,7 +33,7 @@ export default {
   },
 
   devServer: {
-    port: wdsPort,
+    port: 7000,
     hot: true,
   },
 
