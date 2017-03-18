@@ -2,6 +2,7 @@
 import express from 'express';
 import { Server } from 'http';
 import socketIO from 'socket.io';
+import { Board, Led } from 'johnny-five';
 
 import { webPort, staticPath } from '../shared/config';
 import renderApp from './render-app';
@@ -25,4 +26,26 @@ http.listen(webPort, () => {
 
 io.on('connect', (socket) => {
   console.log('[socket.io] A client connected');
+});
+
+const board = new Board();
+
+let redLight, yellowLight, greenLight;
+
+board.on('ready', function() {
+  console.log('[johnny-five] Robot Online.');
+
+  redLight = new Led('11');
+
+  this.repl.inject({
+    hello: () => {
+      redLight.pulse(500);
+      console.log('[johnny-five] Hello World!');
+    },
+
+    off: () => {
+      redLight.stop().off();
+      console.log('[johnny-five] Sleeping now.');
+    }
+  });
 });
