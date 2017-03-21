@@ -2,17 +2,32 @@
 import { createAction } from 'redux-actions';
 
 export const TEST_LIGHT = 'TEST_LIGHT';
+export const STOP_LIGHT = 'STOP_LIGHT';
+export const PULSE_LIGHT = 'PULSE_LIGHT';
 
-let test = false;
+export const testLight = () => {
 
-export const testLight = createAction(TEST_LIGHT, () => {
+  return {
+    type: TEST_LIGHT,
+    meta: { remote: true },
+    payload: true,
+  };
 
-  if (test) {
-    test = false;
-  } else {
-    test = true;
+};
+
+export const stopLight = () => {
+
+  return {
+    type: STOP_LIGHT,
+    meta: { remote: true },
+    payload: false,
+  };
+};
+
+export const pulseLight = () => {
+  return {
+    type: PULSE_LIGHT,
+    meta: { remote: true },
+    payload: true,
   }
-
-  return test;
-
-});
+};

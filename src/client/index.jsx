@@ -5,25 +5,29 @@ import * as Immutable from 'immutable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { createStore, combineReducers, compose } from 'redux';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import socketIOClient from 'socket.io-client';
+import socketIoMiddleware from 'redux-socket.io-middleware';
 
 import App from '../shared/app';
 import trafficLightReducer from '../shared/reducers/traffic-lights';
 import { appContainerSelector } from '../shared/config';
 
+const io = socketIOClient(window.location.host);
+
 const rootEl = document.querySelector(appContainerSelector);
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const preloadedState = window.__PRELOADED_STATE__;
 /* eslint-enable no-underscore-dangle */
 
 const store = createStore(combineReducers(
   { lights: trafficLightReducer }),
-  // { lights: Immutable.fromJS(preloadedState.lights)},
-  composeEnhancers());
+  composeEnhancers(applyMiddleware(
+    socketIoMiddleware(io),
+  )),
+);
 
 const AppWrapper = (AppComponent, ReduxStore) => (
   <Provider store={ReduxStore}>
@@ -32,8 +36,6 @@ const AppWrapper = (AppComponent, ReduxStore) => (
     </AppContainer>
   </Provider>
 );
-
-const io = socketIOClient(window.location.host);
 
 io.on('connect', () => {
   console.log('[socket.io] A client connected');
