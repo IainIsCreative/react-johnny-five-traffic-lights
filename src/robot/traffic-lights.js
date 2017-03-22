@@ -1,61 +1,91 @@
 var delay = 1500;
 
-function Lights(stop, start, go) {
+class TrafficLights {
 
-  this.stop = stop;
-  this.start = start;
-  this.go = go;
-  this.init();
+  lights: Array;
 
-  return this;
+  constructor(lights: Array) {
+    this.lights = lights;
+    this.red = lights[0];
+    this.yellow = lights[1];
+    this.green = lights[2];
+  }
+
+  lightsOn() {
+    console.log('[johnny-five] Lights are on.');
+    this.lights.on();
+  }
+
+  lightsOff() {
+    console.log('[johnny-five] Lights are off.');
+    this.lights.stop().off();
+  }
+
+  testLights() {
+    console.log('[johnny-five] Testing lights with pulse function.');
+    this.lights.pulse();
+  }
+
+  toStopPosition() {
+    console.log('[johnny-five] Proceeding with Stop Sequence.');
+
+    this.red.stop().off();
+    this.yellow.stop().off();
+    this.green.on();
+
+    setTimeout(() => {
+      this.green.stop().off();
+      this.yellow.pulse(300)
+    }, 2000);
+
+    setTimeout(() => {
+      this.red.on();
+      this.yellow.stop().off();
+    }, 3500);
+
+  }
+
+  toGoPosition() {
+    console.log('[johnny-five] Proceeding with Go Sequence.');
+
+    this.red.on();
+    this.yellow.stop().off();
+    this.green.stop().off();
+
+    setTimeout(() => {
+      this.yellow.on();
+    }, 2000);
+
+    setTimeout(() => {
+      this.red.stop().off();
+      this.yellow.stop().off();
+      this.green.on();
+    }, 3500);
+
+  }
+
+  loopLights() {
+    console.log('[johnny-five] Lights Looping.');
+
+    this.toGoPosition();
+
+    setTimeout(() => {
+      this.toStopPosition();
+    }, 4000);
+
+    setTimeout(() => {
+      this.loopLights();
+    }, 8000);
+
+  }
+
+  stopLoop() {
+    this.lightsOff();
+    setTimeout(() => {
+      this.lightsOn();
+    }, 300);
+  }
 
 }
 
-Lights.prototype = {
-
-  init: function() {
-    this.stop.on();
-    this.start.off();
-    this.go.off();
-  },
-
-  goLight: function() {
-    var stopLight = this.stop;
-    var startLight = this.start;
-    var goLight = this.go;
-
-    startLight.on();
-    setTimeout(function() {
-      stopLight.off();
-      startLight.off();
-      goLight.on();
-    }, delay);
-  },
-
-  stopLight: function() {
-    var stopLight = this.stop;
-    var startLight = this.start;
-    var goLight = this.go;
-
-    startLight.pulse(delay / 5);
-    goLight.off();
-    setTimeout(function() {
-      startLight.stop().off();
-      stopLight.on();
-    }, delay);
-  },
-
-  off: function() {
-    this.stop.off();
-    if(this.start.pulse()) {
-      console.log('true');
-      this.start.stop().off();
-    } else {
-      this.start.off();
-    }
-    this.go.off();
-  },
-
-}
-
-export default Lights;
+export default TrafficLights;
