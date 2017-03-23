@@ -2,15 +2,15 @@
 
 import { connect } from 'react-redux';
 
-import { testLight } from '../actions/traffic-lights';
+import { goLight } from '../actions/traffic-lights';
 import Button from '../components/button';
 
-const mapStateToProps = () => ({
-  label: 'Test Me',
+const mapStateToProps = state => ({
+  label: 'Go Sequence',
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: () => { dispatch(testLight()); },
+  handleClick: () => { dispatch(goLight()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Button);

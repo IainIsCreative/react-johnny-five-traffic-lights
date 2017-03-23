@@ -1,15 +1,34 @@
 // @flow
 
 import React from 'react';
-import TestButton from './containers/test-button';
+import MessageModal from './containers/message-modal';
+import PulseButton from './containers/pulse-button';
+import ToggleButton from './containers/toggle-button';
 import StopButton from './containers/stop-button';
-import PulseButton from './containers/pulse';
+import GoButton from './containers/go-button';
+import LoopButton from './containers/loop-button';
 
 const App = () => (
   <div className="traffic-lights-app">
-    <TestButton />
-    <StopButton />
-    <PulseButton />
+    <MessageModal />
+    <ul className="light-buttons">
+      <li>
+        <ToggleButton />
+      </li>
+      <li>
+        <PulseButton />
+      </li>
+      <li>
+        <GoButton />
+      </li>
+      <li>
+        <StopButton />
+      </li>
+      <li>
+        <LoopButton />
+      </li>
+    </ul>
+
   </div>
 );
 

@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { stopLight } from '../actions/traffic-lights';
 import Button from '../components/button';
 
-const mapStateToProps = () => ({
-  label: 'Stop Me',
+const mapStateToProps = state => ({
+  label: 'Stop Sequence',
 });
 
 const mapDispatchToProps = dispatch => ({
