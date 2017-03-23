@@ -50,12 +50,12 @@ class TrafficLights {
 
   /**
    *
-   * testLights() function
+   * pulseLights() function
    *
    * Makes the lights do a pulse function in Johnny-Five.
    *
    */
-  testLights() {
+  pulseLights() {
     console.log('[johnny-five] Testing lights with pulse function.');
     this.lights.pulse();
   }
