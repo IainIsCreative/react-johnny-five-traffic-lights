@@ -6,7 +6,15 @@ import { Board, Leds } from 'johnny-five';
 
 import { webPort, staticPath } from '../shared/config';
 import renderApp from './render-app';
-import { TEST_LIGHT, STOP_LIGHT, PULSE_LIGHT } from '../shared/actions/traffic-lights';
+import {
+  LIGHTS_ON,
+  LIGHTS_OFF,
+  PULSE_LIGHT,
+  GO_LIGHT,
+  STOP_LIGHT,
+  LIGHTS_LOOP,
+  STOP_LOOP,
+} from '../shared/actions/traffic-lights';
 import TrafficLights from '../robot/traffic-lights';
 
 const app = express();
@@ -41,14 +49,26 @@ board.on('ready', function() {
     console.log('[socket.io] A client connected');
     socket.on('action', (action) => {
       switch(action.type) {
-        case TEST_LIGHT:
-          l.loopLights();
+        case LIGHTS_ON:
+          l.lightsOn();
           break;
-        case STOP_LIGHT:
-          l.stopLoop();
+        case LIGHTS_OFF:
+          l.lightsOff();
           break;
         case PULSE_LIGHT:
-          l.testLights();
+          l.pulseLights();
+          break;
+        case GO_LIGHT:
+          l.toGoPosition();
+          break;
+        case STOP_LIGHT:
+          l.toStopPosition();
+          break;
+        case LIGHTS_LOOP:
+          l.loopLights();
+          break;
+        case STOP_LOOP:
+          l.lightsOff();
           break;
       }
     });
