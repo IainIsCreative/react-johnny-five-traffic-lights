@@ -6,8 +6,8 @@ import { Board, Leds } from 'johnny-five';
 
 import { webPort, staticPath } from '../shared/config';
 import renderApp from './render-app';
-
 import { TEST_LIGHT, STOP_LIGHT, PULSE_LIGHT } from '../shared/actions/traffic-lights';
+import TrafficLights from '../robot/traffic-lights';
 
 const app = express();
 // flow-disable-next-line
@@ -35,43 +35,27 @@ board.on('ready', function() {
 
   lights = new Leds([11, 10, 9]);
 
-  // redLight = lights[0];
-  // yellowLight = lights[1];
-  // greenLight = lights[2];
-
-  // lights.pulse();
+  const l = new TrafficLights(lights);
 
   io.on('connection', (socket) => {
     console.log('[socket.io] A client connected');
     socket.on('action', (action) => {
       switch(action.type) {
         case TEST_LIGHT:
-          lights.on();
-          console.log('[johnny-five] Hello World!');
+          l.loopLights();
           break;
         case STOP_LIGHT:
-          lights.stop().off();
-          console.log('[johnny-five] Sleeping now.');
+          l.stopLoop();
           break;
         case PULSE_LIGHT:
-          lights.pulse();
-          console.log('[johnny-five] Pulsing!');
+          l.testLights();
           break;
-        default:
-          return false;
       }
     });
   });
 
-  this.repl.inject({
-
-    off: () => {
-      lights.stop().off();
-    },
-  });
-
   board.on('exit', () => {
-    lights.stop().off();
+    l.lightsOff();
   });
 
 });
