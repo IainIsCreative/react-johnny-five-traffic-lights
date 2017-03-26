@@ -15,7 +15,6 @@ const buttonLabel = (state) => {
   return label;
 };
 
-
 const mapStateToProps = state => ({
   label: buttonLabel(state.lights.get('trafficLights')),
 });

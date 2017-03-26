@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node lib/server",
     "build": "rimraf lib dist && babel src -d lib && webpack -p progress",
+    "styles": "postcss --config .postcssrc",
     "dev-start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
     "dev-server": "webpack-dev-server --progress"
   },
@@ -14,6 +15,8 @@
     "express": "^4.15.2",
     "immutable": "^3.8.1",
     "johnny-five": "^0.10.6",
+    "postcss-import": "^9.1.0",
+    "postcss-watch": "^0.1.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",
@@ -42,6 +45,8 @@
     "flow-bin": "^0.41.0",
     "jest": "^19.0.2",
     "nodemon": "^1.11.0",
+    "postcss-cli": "^3.0.0",
+    "postcss-load-config": "^1.2.0",
     "redux-mock-store": "^1.2.2",
     "rimraf": "^2.6.1",
     "webpack": "^2.2.1",

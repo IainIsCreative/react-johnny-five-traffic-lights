@@ -2,8 +2,8 @@
 
 import React, { PropTypes } from 'react';
 
-const Button = ({ handleClick, label } : { handleClick: Function, label: string }) => (
-  <button onClick={handleClick}>{label}</button>
+const Button = ({ handleClick, label, classNames } : { handleClick: Function, label: string }) => (
+  <button className="button" onClick={handleClick}>{label}</button>
 );
 
 Button.propTypes = {
