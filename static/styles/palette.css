@@ -1,0 +1,14 @@
+/**
+ *
+ * Color Palette CSS
+ *
+ * File to store variables of the color palette to be used throughout the
+ * stylesheet.
+ *
+ */
+:root {
+  --green: #7dde96;
+  --light-green: #eefdff;
+  --dark-green: #396645;
+  --light-teal: #6accB0;
+}

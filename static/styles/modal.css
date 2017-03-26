@@ -1,0 +1,9 @@
+.message-modal {
+  padding: 12px 10px;
+  margin: 20px 0;
+  color: --dark-green;
+  background: --light-teal;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  text-align: center;
+}
