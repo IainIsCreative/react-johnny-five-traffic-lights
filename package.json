@@ -1,7 +1,8 @@
 {
-  "name": "react-arduino-traffic-lights",
+  "name": "react-johnny-five-traffic-lights",
   "version": "1.0.0",
-  "main": "index.js",
+  "author": "Iain (@IainIsCreative)",
+  "main": "src/server/index.js",
   "license": "MIT",
   "scripts": {
     "start": "node lib/server",
