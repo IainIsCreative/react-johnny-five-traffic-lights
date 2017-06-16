@@ -18,7 +18,7 @@ The circuit is very simple for this — it consists of 3 LEDs (red, yellow, and 
 
 The diagram is pretty simple — connect up each LED to pins 11, 10, and 9, respectively, along with the 220Ohm resistors for each LED. Remember to attach the Ground so the circuit can work! All in all, the circuit is very simple to put together.
 
-![https://raw.githubusercontent.com/IainIsCreative/react-johnny-five-traffic-lights/develop/assets/traffic-lights-diagram.jpg](Fritzieg Diagram of the Traffic Lights circuit.)
+![Fritzieg Diagram of the Traffic Lights circuit.](https://raw.githubusercontent.com/IainIsCreative/react-johnny-five-traffic-lights/develop/assets/traffic-lights-diagram.jpg)
 
 
 ## Installing
