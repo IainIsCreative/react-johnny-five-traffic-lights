@@ -12,26 +12,43 @@ import {
   STOP_LOOP,
 } from '../actions/traffic-lights';
 
+/**
+ *
+ * Set the initial state of our app
+ *
+ */
 const initialState = Immutable.fromJS({
   trafficLights: 'Robot is ready.',
 });
 
-const trafficLightReducer = (state: Object = initialState, action: { type: String, payload: any }) => {
-  switch(action.type) {
+/**
+ *
+ * The Traffic Light Reducer
+ *
+ * Depending on what actions take place, this will update the state of our app
+ * using the payload in that action.
+ * This is mostly used for the UI, but can be extended to use on our robot
+ * as well.
+ *
+ */
+const trafficLightReducer = (state: Object = initialState, action: {
+  type: String, payload: any
+}) => {
+  switch (action.type) {
     case LIGHTS_ON:
-      return state.set('trafficLights', 'Lights are on.');
+      return state.set('trafficLights', action.payload);
     case LIGHTS_OFF:
-      return state.set('trafficLights', 'Lights are off.');
+      return state.set('trafficLights', action.payload);
     case PULSE_LIGHT:
-      return state.set('trafficLights', 'Lights are pulsing.');
+      return state.set('trafficLights', action.payload);
     case GO_LIGHT:
-      return state.set('trafficLights', 'Initiating Go sequence.');
+      return state.set('trafficLights', action.payload);
     case STOP_LIGHT:
-      return state.set('trafficLights', 'Initiating Stop sequence.');
+      return state.set('trafficLights', action.payload);
     case LIGHTS_LOOP:
-      return state.set('trafficLights', 'Lights Loop Initiated.');
+      return state.set('trafficLights', action.payload);
     case STOP_LOOP:
-      return state.set('trafficLights', 'Lights Loop stopped.');
+      return state.set('trafficLights', action.payload);
     default:
       return state;
   }

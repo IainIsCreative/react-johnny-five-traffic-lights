@@ -5,7 +5,15 @@ import { connect } from 'react-redux';
 import { stopLight } from '../actions/traffic-lights';
 import Button from '../components/button';
 
-const mapStateToProps = state => ({
+/**
+ *
+ * Stop Sequence Button
+ *
+ * This button triggers the stop sequence of the lights.
+ *
+ */
+
+const mapStateToProps = () => ({
   label: 'Stop Sequence',
 });
 

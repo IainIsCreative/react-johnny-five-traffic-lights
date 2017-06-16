@@ -8,6 +8,13 @@ import StopButton from './containers/stop-button';
 import GoButton from './containers/go-button';
 import LoopButton from './containers/loop-button';
 
+/**
+ *
+ * App Container
+ *
+ * This places all the necessary components in one single Component wrapper.
+ *
+ */
 const App = () => (
   <div className="traffic-lights-app">
     <MessageModal />
@@ -28,7 +35,6 @@ const App = () => (
         <LoopButton />
       </li>
     </ul>
-
   </div>
 );
 

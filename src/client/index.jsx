@@ -22,6 +22,7 @@ const rootEl = document.querySelector(appContainerSelector);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable no-underscore-dangle */
 
+// Make our store store with our reducer and socket.io middleware
 const store = createStore(combineReducers(
   { lights: trafficLightReducer }),
   composeEnhancers(applyMiddleware(
@@ -29,6 +30,12 @@ const store = createStore(combineReducers(
   )),
 );
 
+/**
+ *
+ * Take our App component and place it under the wrapper so it can interact with
+ * our Redux store and get Hot Reloading.
+ *
+ */
 const AppWrapper = (AppComponent, ReduxStore) => (
   <Provider store={ReduxStore}>
     <AppContainer>
@@ -37,12 +44,15 @@ const AppWrapper = (AppComponent, ReduxStore) => (
   </Provider>
 );
 
+// Let the browser console know that it's connected
 io.on('connect', () => {
   console.log('[socket.io] A client connected');
 });
 
+// Get React to render our app
 ReactDOM.render(AppWrapper(App, store), rootEl);
 
+// If the application has changed, place the changes into the browser
 if (module.hot) {
   // flow-disable-next-line
   module.hot.accept('../shared/app', () => {

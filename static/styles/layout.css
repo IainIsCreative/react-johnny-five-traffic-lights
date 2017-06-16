@@ -1,3 +1,9 @@
+/**
+ *
+ * Simple CSS resetting for this project.
+ *
+ */
+
 *,
 *:before,
 *:after {
@@ -8,9 +14,15 @@ html {
   box-sizing: border-box;
 }
 
+/**
+ *
+ * Begin main layout styles.
+ *
+ */
+
 body {
-  background: #eefdff;
-  color: #047255;
+  background: var(--light-green);
+  color: var(--dark-green);
   font-family: 'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   display: flex;

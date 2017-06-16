@@ -1,3 +1,14 @@
+/**
+ *
+ * Button styles and layout file.
+ *
+ */
+
+/**
+ *
+ * Make the button layout using an unordered list.
+ *
+ */
 .light-buttons {
   margin: 0;
   padding: 0;
@@ -9,9 +20,14 @@
   padding: 10px 0;
 }
 
+/**
+ *
+ * Button styles — all buttons look the same so not much styling required.
+ *
+ */
 .button {
-  background: --green;
-  color: --dark-green;
+  background: var(--green);
+  color: var(--dark-green);
   width: 100%;
   text-align: center;
   font-family: inherit;
@@ -22,6 +38,11 @@
   border: 1px solid currentColor;
 }
 
+/**
+ *
+ * Add media queries to change button layout accordingly.
+ *
+ */
 @media screen and (min-width: 25em) {
   .light-buttons {
     display: flex;

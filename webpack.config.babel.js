@@ -14,7 +14,7 @@ export default {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist/js'),
-    publicPath: `http://localhost:7000/dist/js`,
+    publicPath: `dist/js`,
   },
 
   module: {
@@ -32,15 +32,4 @@ export default {
     extensions: ['.js', '.jsx'],
   },
 
-  devServer: {
-    port: 7000,
-    hot: true,
-  },
-
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-  ],
 };

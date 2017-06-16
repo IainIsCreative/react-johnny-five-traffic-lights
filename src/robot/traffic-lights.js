@@ -11,7 +11,6 @@
  *
  */
 class TrafficLights {
-
   lights: Array;
 
   constructor(lights: Array) {
@@ -86,9 +85,7 @@ class TrafficLights {
       this.yellow.off();
       this.green.on();
     }, 3500);
-
   }
-
   /**
    *
    * toStopPosition() function
@@ -109,14 +106,13 @@ class TrafficLights {
 
     setTimeout(() => {
       this.green.off();
-      this.yellow.pulse(300)
+      this.yellow.pulse(300);
     }, 2000);
 
     setTimeout(() => {
       this.red.on();
       this.yellow.stop().off();
     }, 3500);
-
   }
 
   /**
@@ -134,7 +130,6 @@ class TrafficLights {
     setTimeout(() => {
       this.toStopPosition();
     }, 4000);
-
   }
 
   /**
@@ -151,18 +146,7 @@ class TrafficLights {
     this.loop = setTimeout(() => {
       this.buildLoop();
     }, 8000);
-
   }
-
-  stopLoop() {
-    clearTimeout(this.loop);
-    this.loop = undefined;
-    this.lightsOff();
-    setTimeout(() => {
-      this.lightsOn();
-    }, 300);
-  }
-
 }
 
 export default TrafficLights;

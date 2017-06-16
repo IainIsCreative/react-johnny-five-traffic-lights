@@ -4,6 +4,16 @@ import ReactDOMServer from 'react-dom/server';
 
 import { appName, appContainer, staticPath, wdsPort } from '../shared/config';
 
+/**
+ *
+ * Application Markup
+ *
+ * This is a wrapper for all our application HTML — this is used by Express to
+ * render our page and the app inside it so it's universally read, and not
+ * just adding an overlay to the DOM.
+ *
+ */
+
 const renderApp = () => (
   `<!doctype html>
   <html>

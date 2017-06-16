@@ -12,6 +12,16 @@ let lightsOn = false;
 let pulse = false;
 let loop = false;
 
+/**
+ *
+ * Traffic Light Actions
+ *
+ * These functions are our actions — each function can be placed into our app's
+ * containers. In this case, the buttons on our interface will execute these
+ * functions on click and update our store.
+ *
+ */
+
 export const lightsToggle = () => {
   if (lightsOn) {
     lightsOn = false;
@@ -22,25 +32,21 @@ export const lightsToggle = () => {
   return {
     type: lightsOn ? LIGHTS_ON : LIGHTS_OFF,
     meta: { remote: true },
-    payload: lightsOn ? 'lights on' : 'lights off',
+    payload: lightsOn ? 'Lights are on.' : 'Lights are off.',
   };
 };
 
-export const goLight = () => {
-  return {
-    type: GO_LIGHT,
-    meta: { remote: true },
-    payload: 'go sequence',
-  };
-};
+export const goLight = () => ({
+  type: GO_LIGHT,
+  meta: { remote: true },
+  payload: 'Initiating Go sequence.',
+});
 
-export const stopLight = () => {
-  return {
-    type: STOP_LIGHT,
-    meta: { remote: true },
-    payload: 'stop sequence',
-  };
-};
+export const stopLight = () => ({
+  type: STOP_LIGHT,
+  meta: { remote: true },
+  payload: 'Initiating Stop sequence.',
+});
 
 export const pulseLight = () => {
   if (pulse) {
@@ -48,24 +54,24 @@ export const pulseLight = () => {
   } else {
     pulse = true;
   }
+
   return {
     type: pulse ? PULSE_LIGHT : LIGHTS_OFF,
     meta: { remote: true },
-    payload: pulse ? 'lights pulsing' : 'lights off',
-  }
+    payload: pulse ? 'Lights are pulsing.' : 'Lights are off.',
+  };
 };
 
 export const lightsLoop = () => {
-
-  if(loop) {
+  if (loop) {
     loop = false;
   } else {
     loop = true;
   }
 
   return {
-    type: loop ? LIGHTS_LOOP : LIGHTS_OFF,
+    type: loop ? LIGHTS_LOOP : STOP_LOOP,
     meta: { remote: true },
-    payload: loop ? 'loop sequence' : 'loop stopped',
+    payload: loop ? 'Lights Loop initiated.' : 'Lights Loop stopped.',
   };
-}
+};

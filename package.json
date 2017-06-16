@@ -5,8 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node lib/server",
-    "build": "rimraf lib dist && babel src -d lib && webpack -p progress",
-    "styles": "postcss --config .postcssrc",
+    "build": "rimraf lib dist && babel src -d lib && webpack -p --progress && postcss static/styles/main.css  -o dist/styles/style.css",
+    "styles": "postcss static/styles/main.css  -o dist/styles/style.css",
+    "test": "eslint src && flow",
     "dev-start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
     "dev-server": "webpack-dev-server --progress"
   },

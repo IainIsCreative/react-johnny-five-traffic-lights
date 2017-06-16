@@ -2,7 +2,16 @@
 
 import React, { PropTypes } from 'react';
 
-const Button = ({ handleClick, label, classNames } : { handleClick: Function, label: string }) => (
+/**
+ *
+ * Button Component
+ *
+ * A component that's reusable for making different buttons, and can be used
+ * to work with our Redux Store using the `handleClick` function.
+ *
+ */
+
+const Button = ({ handleClick, label } : { handleClick: Function, label: string }) => (
   <button className="button" onClick={handleClick}>{label}</button>
 );
 
