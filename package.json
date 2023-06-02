@@ -17,7 +17,7 @@
     "cssnano": "^3.10.0",
     "express": "^4.15.2",
     "immutable": "^3.8.1",
-    "johnny-five": "^0.10.6",
+    "johnny-five": "^0.15.1",
     "postcss-cssnext": "^2.10.0",
     "postcss-import": "^9.1.0",
     "postcss-watch": "^0.1.1",
